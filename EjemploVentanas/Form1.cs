@@ -48,7 +48,7 @@ namespace EjemploVentanas
             estForm.promedio = exito?valor:0;
             lblEstudianteRegistrado.Text = "Se registró exitosamente!";
             string pre = "pregrado", post = "postgrado";
-            lblEstudianteRegistrado.Text = $"Se registró al estudiante\n{estForm.nombre} {estForm.apellido}\nnacido en fecha {estForm.fechaNacimiento.ToString("dd-MM-yyyy",CultureInfo.InvariantCulture)}\nque es estudiante de {estForm.pregrado} con promedio {estForm.promedio}.";
+            lblEstudianteRegistrado.Text = $"Se registró al estudiante\n{estForm.nombre} {estForm.apellido}\nnacido en fecha {estForm.fechaNacimiento.ToString("dd-MM-yyyy",CultureInfo.InvariantCulture)}\nque es estudiante de {(estForm.pregrado?"pregrado":"postgrado")}\ncon promedio {estForm.promedio.ToString("0.0")}.";
         }
     }
 

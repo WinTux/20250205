@@ -42,6 +42,8 @@
             tabPage2 = new TabPage();
             label3 = new Label();
             tabPage1 = new TabPage();
+            groupBox2 = new GroupBox();
+            lblEstudianteRegistrado = new Label();
             chckFormPregrado = new CheckBox();
             label8 = new Label();
             datePckFormFechaNac = new DateTimePicker();
@@ -56,8 +58,6 @@
             button3 = new Button();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
-            groupBox2 = new GroupBox();
-            lblEstudianteRegistrado = new Label();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -211,6 +211,24 @@
             tabPage1.Text = "Registro";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(lblEstudianteRegistrado);
+            groupBox2.Location = new Point(19, 256);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(220, 119);
+            groupBox2.TabIndex = 7;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Estudiante registrado";
+            // 
+            // lblEstudianteRegistrado
+            // 
+            lblEstudianteRegistrado.AutoSize = true;
+            lblEstudianteRegistrado.Location = new Point(16, 19);
+            lblEstudianteRegistrado.Name = "lblEstudianteRegistrado";
+            lblEstudianteRegistrado.Size = new Size(0, 15);
+            lblEstudianteRegistrado.TabIndex = 0;
+            // 
             // chckFormPregrado
             // 
             chckFormPregrado.AutoSize = true;
@@ -231,6 +249,7 @@
             // 
             // datePckFormFechaNac
             // 
+            datePckFormFechaNac.Format = DateTimePickerFormat.Short;
             datePckFormFechaNac.Location = new Point(142, 117);
             datePckFormFechaNac.Name = "datePckFormFechaNac";
             datePckFormFechaNac.Size = new Size(97, 23);
@@ -329,24 +348,6 @@
             tabPage4.TabIndex = 3;
             tabPage4.Text = "tabPage4";
             tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(lblEstudianteRegistrado);
-            groupBox2.Location = new Point(19, 256);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(220, 119);
-            groupBox2.TabIndex = 7;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Estudiante registrado";
-            // 
-            // lblEstudianteRegistrado
-            // 
-            lblEstudianteRegistrado.AutoSize = true;
-            lblEstudianteRegistrado.Location = new Point(16, 19);
-            lblEstudianteRegistrado.Name = "lblEstudianteRegistrado";
-            lblEstudianteRegistrado.Size = new Size(0, 15);
-            lblEstudianteRegistrado.TabIndex = 0;
             // 
             // Form1
             // 

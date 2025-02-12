@@ -8,6 +8,7 @@ namespace EjemploVentanas.Models
 {
     public class Estudiante
     {
+        public int id {  get; set; }
         private string _nombre;
         private string _apellido;
         private DateTime _fechaNacimiento;

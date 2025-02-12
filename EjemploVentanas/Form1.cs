@@ -1,4 +1,5 @@
 using EjemploVentanas.Models;
+using Microsoft.Data.SqlClient;
 using System.Globalization;
 
 namespace EjemploVentanas
@@ -49,6 +50,19 @@ namespace EjemploVentanas
             lblEstudianteRegistrado.Text = "Se registró exitosamente!";
             string pre = "pregrado", post = "postgrado";
             lblEstudianteRegistrado.Text = $"Se registró al estudiante\n{estForm.nombre} {estForm.apellido}\nnacido en fecha {estForm.fechaNacimiento.ToString("dd-MM-yyyy",CultureInfo.InvariantCulture)}\nque es estudiante de {(estForm.pregrado?"pregrado":"postgrado")}\ncon promedio {estForm.promedio.ToString("0.0")}.";
+            registrarEnBaseDeDatos();
+            lblEstudianteRegistrado.Text += "\nRegistrado en la Base de Datos";
+        }
+
+        private void registrarEnBaseDeDatos()
+        {
+            string cadena = @"Server=192.168.1.254;DataBase=UniversidadX;User=sa;password=123456ABCxyz;Encrypt=False;TrustServerCertificate=True";//cadena de conexión
+
+            using (SqlConnection con = new SqlConnection(cadena)) {
+                con.Open();
+                // Proceso de interés
+                con.Close();
+            }
         }
     }
 

@@ -57,12 +57,34 @@
             label4 = new Label();
             button3 = new Button();
             tabPage3 = new TabPage();
+            lblMensajeEliminar = new Label();
+            button4 = new Button();
+            txtId = new TextBox();
+            label10 = new Label();
             tabPage4 = new TabPage();
+            txtModId = new TextBox();
+            label17 = new Label();
+            lblModMensaje = new Label();
+            button5 = new Button();
+            chkModPregrado = new CheckBox();
+            label11 = new Label();
+            tdPckrModFechaNac = new DateTimePicker();
+            txtModPromedio = new TextBox();
+            txtModApellido = new TextBox();
+            txtModNombre = new TextBox();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            button6 = new Button();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
             SuspendLayout();
             // 
             // lblSaludo
@@ -333,21 +355,210 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(lblMensajeEliminar);
+            tabPage3.Controls.Add(button4);
+            tabPage3.Controls.Add(txtId);
+            tabPage3.Controls.Add(label10);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(258, 398);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
+            tabPage3.Text = "Eliminación";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblMensajeEliminar
+            // 
+            lblMensajeEliminar.AutoSize = true;
+            lblMensajeEliminar.Location = new Point(24, 105);
+            lblMensajeEliminar.Name = "lblMensajeEliminar";
+            lblMensajeEliminar.Size = new Size(0, 15);
+            lblMensajeEliminar.TabIndex = 3;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(161, 17);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 2;
+            button4.Text = "Eliminar";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(55, 17);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(100, 23);
+            txtId.TabIndex = 1;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(31, 20);
+            label10.Name = "label10";
+            label10.Size = new Size(18, 15);
+            label10.TabIndex = 0;
+            label10.Text = "ID";
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button6);
+            tabPage4.Controls.Add(txtModId);
+            tabPage4.Controls.Add(label17);
+            tabPage4.Controls.Add(lblModMensaje);
+            tabPage4.Controls.Add(button5);
+            tabPage4.Controls.Add(chkModPregrado);
+            tabPage4.Controls.Add(label11);
+            tabPage4.Controls.Add(tdPckrModFechaNac);
+            tabPage4.Controls.Add(txtModPromedio);
+            tabPage4.Controls.Add(txtModApellido);
+            tabPage4.Controls.Add(txtModNombre);
+            tabPage4.Controls.Add(label12);
+            tabPage4.Controls.Add(label13);
+            tabPage4.Controls.Add(label14);
+            tabPage4.Controls.Add(label15);
+            tabPage4.Controls.Add(label16);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Size = new Size(258, 398);
             tabPage4.TabIndex = 3;
-            tabPage4.Text = "tabPage4";
+            tabPage4.Text = "Modificar";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtModId
+            // 
+            txtModId.Location = new Point(63, 21);
+            txtModId.Name = "txtModId";
+            txtModId.Size = new Size(100, 23);
+            txtModId.TabIndex = 21;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(25, 24);
+            label17.Name = "label17";
+            label17.Size = new Size(18, 15);
+            label17.TabIndex = 20;
+            label17.Text = "ID";
+            // 
+            // lblModMensaje
+            // 
+            lblModMensaje.AutoSize = true;
+            lblModMensaje.Location = new Point(26, 337);
+            lblModMensaje.Name = "lblModMensaje";
+            lblModMensaje.Size = new Size(0, 15);
+            lblModMensaje.TabIndex = 19;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(165, 285);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 18;
+            button5.Text = "Actualizar";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // chkModPregrado
+            // 
+            chkModPregrado.AutoSize = true;
+            chkModPregrado.Location = new Point(98, 214);
+            chkModPregrado.Name = "chkModPregrado";
+            chkModPregrado.Size = new Size(15, 14);
+            chkModPregrado.TabIndex = 17;
+            chkModPregrado.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(20, 213);
+            label11.Name = "label11";
+            label11.Size = new Size(72, 15);
+            label11.TabIndex = 16;
+            label11.Text = "De pregrado";
+            // 
+            // tdPckrModFechaNac
+            // 
+            tdPckrModFechaNac.Format = DateTimePickerFormat.Short;
+            tdPckrModFechaNac.Location = new Point(143, 175);
+            tdPckrModFechaNac.Name = "tdPckrModFechaNac";
+            tdPckrModFechaNac.Size = new Size(97, 23);
+            tdPckrModFechaNac.TabIndex = 15;
+            // 
+            // txtModPromedio
+            // 
+            txtModPromedio.Location = new Point(143, 240);
+            txtModPromedio.Name = "txtModPromedio";
+            txtModPromedio.Size = new Size(97, 23);
+            txtModPromedio.TabIndex = 12;
+            // 
+            // txtModApellido
+            // 
+            txtModApellido.Location = new Point(77, 143);
+            txtModApellido.Name = "txtModApellido";
+            txtModApellido.Size = new Size(163, 23);
+            txtModApellido.TabIndex = 13;
+            // 
+            // txtModNombre
+            // 
+            txtModNombre.Location = new Point(77, 112);
+            txtModNombre.Name = "txtModNombre";
+            txtModNombre.Size = new Size(163, 23);
+            txtModNombre.TabIndex = 14;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(20, 181);
+            label12.Name = "label12";
+            label12.Size = new Size(117, 15);
+            label12.TabIndex = 8;
+            label12.Text = "Fecha de nacimiento";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(20, 243);
+            label13.Name = "label13";
+            label13.Size = new Size(96, 15);
+            label13.TabIndex = 9;
+            label13.Text = "Promedio Global";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(20, 146);
+            label14.Name = "label14";
+            label14.Size = new Size(51, 15);
+            label14.TabIndex = 10;
+            label14.Text = "Apellido";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(20, 115);
+            label15.Name = "label15";
+            label15.Size = new Size(51, 15);
+            label15.TabIndex = 11;
+            label15.Text = "Nombre";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(53, 81);
+            label16.Name = "label16";
+            label16.Size = new Size(184, 15);
+            label16.TabIndex = 7;
+            label16.Text = "MODIFICACIÓN DE ESTUDIANTES";
+            // 
+            // button6
+            // 
+            button6.Location = new Point(169, 23);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 22;
+            button6.Text = "Verificar";
+            button6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -371,6 +582,10 @@
             tabPage1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -407,5 +622,25 @@
         private Label label9;
         private GroupBox groupBox2;
         private Label lblEstudianteRegistrado;
+        private Label lblMensajeEliminar;
+        private Button button4;
+        private TextBox txtId;
+        private Label label10;
+        private CheckBox chkModPregrado;
+        private Label label11;
+        private DateTimePicker tdPckrModFechaNac;
+        private TextBox txtModPromedio;
+        private TextBox txtModApellido;
+        private TextBox txtModNombre;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private TextBox txtModId;
+        private Label label17;
+        private Label lblModMensaje;
+        private Button button5;
+        private Button button6;
     }
 }

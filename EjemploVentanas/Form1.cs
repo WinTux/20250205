@@ -6,6 +6,8 @@ namespace EjemploVentanas
 {
     public partial class Form1 : Form
     {
+        string cadena = @"Server=192.168.1.254;DataBase=UniversidadX;User=sa;password=123456ABCxyz;Encrypt=False;TrustServerCertificate=True";//cadena de conexión
+
         public Form1()
         {
             InitializeComponent();
@@ -46,20 +48,82 @@ namespace EjemploVentanas
             estForm.pregrado = chckFormPregrado.Checked;
             float valor = 0f;
             bool exito = float.TryParse(txtFormPromedio.Text, out valor);
-            estForm.promedio = exito?valor:0;
+            estForm.promedio = exito ? valor : 0;
             lblEstudianteRegistrado.Text = "Se registró exitosamente!";
-            lblEstudianteRegistrado.Text = $"Se registró al estudiante\n{estForm.nombre} {estForm.apellido}\nnacido en fecha {estForm.fechaNacimiento.ToString("dd-MM-yyyy",CultureInfo.InvariantCulture)}\nque es estudiante de {(estForm.pregrado?"pregrado":"postgrado")}\ncon promedio {estForm.promedio.ToString("0.0")}.";
-            registrarEnBaseDeDatos();
+            lblEstudianteRegistrado.Text = $"Se registró al estudiante\n{estForm.nombre} {estForm.apellido}\nnacido en fecha {estForm.fechaNacimiento.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)}\nque es estudiante de {(estForm.pregrado ? "pregrado" : "postgrado")}\ncon promedio {estForm.promedio.ToString("0.0")}.";
+            registrarEnBaseDeDatos(estForm);
             lblEstudianteRegistrado.Text += "\nRegistrado en la Base de Datos";
         }
 
-        private void registrarEnBaseDeDatos()
+        private void registrarEnBaseDeDatos(Estudiante est)
         {
-            string cadena = @"Server=192.168.1.254;DataBase=UniversidadX;User=sa;password=123456ABCxyz;Encrypt=False;TrustServerCertificate=True";//cadena de conexión
-
-            using (SqlConnection con = new SqlConnection(cadena)) {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
                 con.Open();
-                // Proceso de interés
+                // Armar una sentencia SQL INSERT
+                string sql = "insert into Estudiante (nombre, apellido, fechaNacimiento, pregrado, promedio) values (@n,@a,@f,@pre,@pro)";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@n", est.nombre);
+                    cmd.Parameters.AddWithValue("@a", est.apellido);
+                    cmd.Parameters.AddWithValue("@f", est.fechaNacimiento);
+                    cmd.Parameters.AddWithValue("@pre", est.pregrado);
+                    cmd.Parameters.AddWithValue("@pro", est.promedio);
+                    int n = cmd.ExecuteNonQuery();
+                }
+                con.Close();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            int id = 0;
+            bool exito = int.TryParse(txtId.Text, out id);
+
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                // Armar una sentencia SQL INSERT
+                string sql = "delete from Estudiante where id = @id";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    if (exito)
+                    {
+                        // Si el usario ingresa un número
+                        cmd.Parameters.AddWithValue("@id", id);
+                        lblMensajeEliminar.Text = cmd.ExecuteNonQuery() == 1 ? "Se eliminó exitosamente" : "El estudiante no existe (no se hizo nada)";
+                    }
+                }
+                con.Close();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            bool exito = int.TryParse(txtModId.Text, out id);
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                // Armar una sentencia SQL INSERT
+                string sql = "update Estudiante set nombre = @n, apellido = @a, fechaNacimiento = @f, pregrado = @pre, promedio = @pro where id = @id";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    if (exito)
+                    {
+                        // Si el usario ingresa un número
+                        cmd.Parameters.AddWithValue("@n", txtModNombre.Text);
+                        cmd.Parameters.AddWithValue("@a", txtModApellido.Text);
+                        cmd.Parameters.AddWithValue("@f", tdPckrModFechaNac.Value);
+                        cmd.Parameters.AddWithValue("@pre", chkModPregrado.Checked);
+                        cmd.Parameters.AddWithValue("@pro", txtModPromedio.Text);
+                        lblModMensaje.Text = cmd.ExecuteNonQuery() == 1 ? "Se modificó exitosamente" : "El estudiante no existe (no se hizo nada)";
+                    }
+                }
                 con.Close();
             }
         }

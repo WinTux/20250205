@@ -121,8 +121,151 @@ namespace EjemploVentanas
                         cmd.Parameters.AddWithValue("@f", tdPckrModFechaNac.Value);
                         cmd.Parameters.AddWithValue("@pre", chkModPregrado.Checked);
                         cmd.Parameters.AddWithValue("@pro", txtModPromedio.Text);
+                        cmd.Parameters.AddWithValue("@id", id);
                         lblModMensaje.Text = cmd.ExecuteNonQuery() == 1 ? "Se modificó exitosamente" : "El estudiante no existe (no se hizo nada)";
                     }
+                }
+                con.Close();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            bool exito = int.TryParse(txtModId.Text, out id);
+            if (exito)
+            {
+                // Es un número válido
+                using (SqlConnection con = new SqlConnection(cadena))
+                {
+                    con.Open();
+                    // Armar una sentencia SQL INSERT
+                    string sql = "select * from Estudiante where id = @id";
+                    // Enviarla como comando
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        SqlDataReader reader;
+                        reader = cmd.ExecuteReader();
+                        bool flag = false;
+                        while (reader.Read())
+                        {
+                            flag = true;
+                            // Asignar los campos al formulario
+                            txtModNombre.Text = reader.GetString(1); // index-0
+                            txtModApellido.Text = reader.GetString(2);
+                            tdPckrModFechaNac.Value = reader.GetDateTime(3);
+                            chkModPregrado.Checked = reader.GetBoolean(4);
+                            txtModPromedio.Text = reader.GetDecimal(5).ToString();
+
+                        }
+                        if (!flag)
+                            lblModMensaje.Text = $"El estudiante con ID {id} no existe.";
+
+                    }
+                    con.Close();
+                }
+            }
+            else
+                lblModMensaje.Text = $"El estudiante con ID {txtModId.Text} no es válido";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                // Armar una sentencia SQL INSERT
+                string sql = "select * from Estudiante";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+                    List<Estudiante> estudiantes = new List<Estudiante>();
+                    while (reader.Read())
+                    {
+                        Estudiante estudiante = new Estudiante();
+                        estudiante.id = reader.GetInt32(0);
+                        estudiante.nombre = reader.GetString(1);
+                        estudiante.apellido = reader.GetString(2);
+                        estudiante.fechaNacimiento = reader.GetDateTime(3);
+                        estudiante.pregrado = reader.GetBoolean(4);
+                        estudiante.promedio = (float)reader.GetDecimal(5);
+
+                        estudiantes.Add(estudiante);
+                    }
+                    tblEstudiantes.DataSource = estudiantes;
+                    //tblEstudiantes.Columns["pre"].HeaderText = "PREGRADO";
+                    //tblEstudiantes.Columns["id"].Width = 3;
+                }
+                con.Close();
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                // Armar una sentencia SQL INSERT
+                string sql = "select * from Estudiante where pregrado = 1";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+                    List<Estudiante> estudiantes = new List<Estudiante>();
+                    while (reader.Read())
+                    {
+                        Estudiante estudiante = new Estudiante();
+                        estudiante.id = reader.GetInt32(0);
+                        estudiante.nombre = reader.GetString(1);
+                        estudiante.apellido = reader.GetString(2);
+                        estudiante.fechaNacimiento = reader.GetDateTime(3);
+                        estudiante.pregrado = reader.GetBoolean(4);
+                        estudiante.promedio = (float)reader.GetDecimal(5);
+
+                        estudiantes.Add(estudiante);
+                    }
+                    tblEstudiantes.DataSource = estudiantes;
+                    //tblEstudiantes.Columns["pre"].HeaderText = "PREGRADO";
+                    //tblEstudiantes.Columns["id"].Width = 3;
+                }
+                con.Close();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                // Armar una sentencia SQL INSERT
+                string sql = "select * from Estudiante where pregrado = 0";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+                    List<Estudiante> estudiantes = new List<Estudiante>();
+                    while (reader.Read())
+                    {
+                        Estudiante estudiante = new Estudiante();
+                        estudiante.id = reader.GetInt32(0);
+                        estudiante.nombre = reader.GetString(1);
+                        estudiante.apellido = reader.GetString(2);
+                        estudiante.fechaNacimiento = reader.GetDateTime(3);
+                        estudiante.pregrado = reader.GetBoolean(4);
+                        estudiante.promedio = (float)reader.GetDecimal(5);
+
+                        estudiantes.Add(estudiante);
+                    }
+                    tblEstudiantes.DataSource = estudiantes;
+                    //tblEstudiantes.Columns["pre"].HeaderText = "PREGRADO";
+                    //tblEstudiantes.Columns["id"].Width = 3;
+
+                    // Procedimientos almacenados & archivos
                 }
                 con.Close();
             }

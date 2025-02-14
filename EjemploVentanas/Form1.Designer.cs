@@ -40,7 +40,9 @@
             label2 = new Label();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            label3 = new Label();
+            button8 = new Button();
+            button7 = new Button();
+            tblEstudiantes = new DataGridView();
             tabPage1 = new TabPage();
             groupBox2 = new GroupBox();
             lblEstudianteRegistrado = new Label();
@@ -62,6 +64,7 @@
             txtId = new TextBox();
             label10 = new Label();
             tabPage4 = new TabPage();
+            button6 = new Button();
             txtModId = new TextBox();
             label17 = new Label();
             lblModMensaje = new Label();
@@ -77,10 +80,11 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
-            button6 = new Button();
+            button9 = new Button();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tblEstudiantes).BeginInit();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -192,23 +196,45 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(label3);
+            tabPage2.Controls.Add(button9);
+            tabPage2.Controls.Add(button8);
+            tabPage2.Controls.Add(button7);
+            tabPage2.Controls.Add(tblEstudiantes);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(258, 398);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Elementos";
+            tabPage2.Text = "Lista est";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // button8
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(34, 33);
-            label3.Name = "label3";
-            label3.Size = new Size(178, 15);
-            label3.TabIndex = 0;
-            label3.Text = "Esta es la pesataña de elementos";
+            button8.Location = new Point(130, 319);
+            button8.Name = "button8";
+            button8.Size = new Size(122, 23);
+            button8.TabIndex = 2;
+            button8.Text = "Cargar pregrado";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(177, 290);
+            button7.Name = "button7";
+            button7.Size = new Size(75, 23);
+            button7.TabIndex = 1;
+            button7.Text = "Cargar";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // tblEstudiantes
+            // 
+            tblEstudiantes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tblEstudiantes.Location = new Point(6, 9);
+            tblEstudiantes.Name = "tblEstudiantes";
+            tblEstudiantes.Size = new Size(246, 257);
+            tblEstudiantes.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -425,6 +451,16 @@
             tabPage4.Text = "Modificar";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            button6.Location = new Point(169, 23);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 22;
+            button6.Text = "Verificar";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // txtModId
             // 
             txtModId.Location = new Point(63, 21);
@@ -551,14 +587,15 @@
             label16.TabIndex = 7;
             label16.Text = "MODIFICACIÓN DE ESTUDIANTES";
             // 
-            // button6
+            // button9
             // 
-            button6.Location = new Point(169, 23);
-            button6.Name = "button6";
-            button6.Size = new Size(75, 23);
-            button6.TabIndex = 22;
-            button6.Text = "Verificar";
-            button6.UseVisualStyleBackColor = true;
+            button9.Location = new Point(132, 354);
+            button9.Name = "button9";
+            button9.Size = new Size(120, 23);
+            button9.TabIndex = 3;
+            button9.Text = "Cargar postgrado";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // Form1
             // 
@@ -577,7 +614,7 @@
             groupBox1.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tblEstudiantes).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -605,7 +642,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private Label label3;
         private Button button3;
         private TabPage tabPage3;
         private TabPage tabPage4;
@@ -642,5 +678,9 @@
         private Label lblModMensaje;
         private Button button5;
         private Button button6;
+        private DataGridView tblEstudiantes;
+        private Button button7;
+        private Button button8;
+        private Button button9;
     }
 }

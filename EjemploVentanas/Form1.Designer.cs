@@ -40,6 +40,7 @@
             label2 = new Label();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
+            button9 = new Button();
             button8 = new Button();
             button7 = new Button();
             tblEstudiantes = new DataGridView();
@@ -80,7 +81,7 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
-            button9 = new Button();
+            button10 = new Button();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -196,6 +197,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button10);
             tabPage2.Controls.Add(button9);
             tabPage2.Controls.Add(button8);
             tabPage2.Controls.Add(button7);
@@ -208,9 +210,19 @@
             tabPage2.Text = "Lista est";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button9
+            // 
+            button9.Location = new Point(130, 301);
+            button9.Name = "button9";
+            button9.Size = new Size(120, 23);
+            button9.TabIndex = 3;
+            button9.Text = "Cargar postgrado";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // button8
             // 
-            button8.Location = new Point(130, 319);
+            button8.Location = new Point(130, 272);
             button8.Name = "button8";
             button8.Size = new Size(122, 23);
             button8.TabIndex = 2;
@@ -220,7 +232,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(177, 290);
+            button7.Location = new Point(6, 272);
             button7.Name = "button7";
             button7.Size = new Size(75, 23);
             button7.TabIndex = 1;
@@ -587,15 +599,15 @@
             label16.TabIndex = 7;
             label16.Text = "MODIFICACIÓN DE ESTUDIANTES";
             // 
-            // button9
+            // button10
             // 
-            button9.Location = new Point(132, 354);
-            button9.Name = "button9";
-            button9.Size = new Size(120, 23);
-            button9.TabIndex = 3;
-            button9.Text = "Cargar postgrado";
-            button9.UseVisualStyleBackColor = true;
-            button9.Click += button9_Click;
+            button10.Location = new Point(116, 330);
+            button10.Name = "button10";
+            button10.Size = new Size(134, 23);
+            button10.TabIndex = 4;
+            button10.Text = "Mejores estudiantes";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
             // 
             // Form1
             // 
@@ -682,5 +694,6 @@
         private Button button7;
         private Button button8;
         private Button button9;
+        private Button button10;
     }
 }

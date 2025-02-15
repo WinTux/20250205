@@ -265,7 +265,36 @@ namespace EjemploVentanas
                     //tblEstudiantes.Columns["pre"].HeaderText = "PREGRADO";
                     //tblEstudiantes.Columns["id"].Width = 3;
 
-                    // Procedimientos almacenados & archivos
+                }
+                con.Close();
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                // Armar una sentencia SQL INSERT
+                string sql = "get_mejores_est";
+                // Enviarla como comando
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@min", System.Data.SqlDbType.Decimal));
+                    cmd.Parameters["@min"].Value = 80;
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+                    List<EstudianteSimple> estudiantes = new List<EstudianteSimple>();
+                    while (reader.Read())
+                    {
+                        EstudianteSimple estudiante = new EstudianteSimple();
+                        estudiante.id = reader.GetInt32(0);
+                        estudiante.nombre = reader.GetString(1);
+                        estudiante.apellido = reader.GetString(2);
+                        estudiantes.Add(estudiante);
+                    }
+                    tblEstudiantes.DataSource = estudiantes;
                 }
                 con.Close();
             }

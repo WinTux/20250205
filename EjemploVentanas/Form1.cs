@@ -1,6 +1,7 @@
 using EjemploVentanas.Models;
 using Microsoft.Data.SqlClient;
 using System.Globalization;
+using System.Text.Json;
 
 namespace EjemploVentanas
 {
@@ -297,6 +298,37 @@ namespace EjemploVentanas
                     tblEstudiantes.DataSource = estudiantes;
                 }
                 con.Close();
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            // Lista de objetos a guardar
+            List<Estudiante> ests = new List<Estudiante>();
+            foreach (DataGridViewRow fila in tblEstudiantes.Rows) {
+                if (!fila.IsNewRow) {
+                    Estudiante est = new Estudiante { 
+                        id = Convert.ToInt32(fila.Cells[0].Value),
+                        nombre = Convert.ToString(fila.Cells[1].Value),
+                        apellido = Convert.ToString(fila.Cells[2].Value),
+                        pregrado = Convert.ToBoolean(fila.Cells[3].Value),
+                        promedio = (float)Convert.ToDecimal(fila.Cells[4].Value),
+                        fechaNacimiento = Convert.ToDateTime(fila.Cells[5].Value)
+                    };
+                    ests.Add(est);
+                }
+            }
+            try {
+                // Ruta donde guardar (datos.json)
+                string ruta = "datos.json";
+                // Serializar el objeto
+                string jsonEstudiantes = JsonSerializer.Serialize(ests);
+                // Guardar
+                File.WriteAllText(ruta, jsonEstudiantes);
+                lblMensajeGuardado.Text = "Exito!!";
+            }
+            catch (Exception ex) { 
+                Console.WriteLine(ex.Message);
             }
         }
     }

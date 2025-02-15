@@ -40,6 +40,9 @@
             label2 = new Label();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
+            groupBox3 = new GroupBox();
+            button11 = new Button();
+            button10 = new Button();
             button9 = new Button();
             button8 = new Button();
             button7 = new Button();
@@ -81,10 +84,11 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
-            button10 = new Button();
+            lblMensajeGuardado = new Label();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
+            groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tblEstudiantes).BeginInit();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -197,6 +201,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(groupBox3);
             tabPage2.Controls.Add(button10);
             tabPage2.Controls.Add(button9);
             tabPage2.Controls.Add(button8);
@@ -209,6 +214,37 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Lista est";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(lblMensajeGuardado);
+            groupBox3.Controls.Add(button11);
+            groupBox3.Location = new Point(6, 352);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(244, 40);
+            groupBox3.TabIndex = 5;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Archivos";
+            // 
+            // button11
+            // 
+            button11.Location = new Point(6, 17);
+            button11.Name = "button11";
+            button11.Size = new Size(75, 23);
+            button11.TabIndex = 0;
+            button11.Text = "Guardar";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(116, 330);
+            button10.Name = "button10";
+            button10.Size = new Size(134, 23);
+            button10.TabIndex = 4;
+            button10.Text = "Mejores estudiantes";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
             // 
             // button9
             // 
@@ -599,15 +635,13 @@
             label16.TabIndex = 7;
             label16.Text = "MODIFICACIÓN DE ESTUDIANTES";
             // 
-            // button10
+            // lblMensajeGuardado
             // 
-            button10.Location = new Point(116, 330);
-            button10.Name = "button10";
-            button10.Size = new Size(134, 23);
-            button10.TabIndex = 4;
-            button10.Text = "Mejores estudiantes";
-            button10.UseVisualStyleBackColor = true;
-            button10.Click += button10_Click;
+            lblMensajeGuardado.AutoSize = true;
+            lblMensajeGuardado.Location = new Point(177, 17);
+            lblMensajeGuardado.Name = "lblMensajeGuardado";
+            lblMensajeGuardado.Size = new Size(0, 15);
+            lblMensajeGuardado.TabIndex = 1;
             // 
             // Form1
             // 
@@ -626,6 +660,8 @@
             groupBox1.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)tblEstudiantes).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -695,5 +731,8 @@
         private Button button8;
         private Button button9;
         private Button button10;
+        private GroupBox groupBox3;
+        private Button button11;
+        private Label lblMensajeGuardado;
     }
 }
